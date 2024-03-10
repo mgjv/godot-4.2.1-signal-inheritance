@@ -1,0 +1,22 @@
+[gd_scene load_steps=5 format=3 uid="uid://b1eb66gqqhn8e"]
+
+[ext_resource type="Script" path="res://Droppable.gd" id="1_et7ig"]
+[ext_resource type="Script" path="res://DerivedDroppable.gd" id="2_xk2of"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_83jaj"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_d0de6"]
+
+[node name="test" type="Node2D"]
+
+[node name="Droppable" type="Area2D" parent="."]
+script = ExtResource("1_et7ig")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Droppable"]
+shape = SubResource("CircleShape2D_83jaj")
+
+[node name="DerivedDroppable" type="Area2D" parent="."]
+script = ExtResource("2_xk2of")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DerivedDroppable"]
+shape = SubResource("RectangleShape2D_d0de6")
