@@ -1,5 +1,6 @@
-[gd_scene load_steps=5 format=3 uid="uid://b1eb66gqqhn8e"]
+[gd_scene load_steps=6 format=3 uid="uid://b1eb66gqqhn8e"]
 
+[ext_resource type="Script" path="res://test.gd" id="1_6i4hw"]
 [ext_resource type="Script" path="res://Droppable.gd" id="1_et7ig"]
 [ext_resource type="Script" path="res://DerivedDroppable.gd" id="2_xk2of"]
 
@@ -8,6 +9,7 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_d0de6"]
 
 [node name="test" type="Node2D"]
+script = ExtResource("1_6i4hw")
 
 [node name="Droppable" type="Area2D" parent="."]
 script = ExtResource("1_et7ig")
@@ -20,3 +22,8 @@ script = ExtResource("2_xk2of")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DerivedDroppable"]
 shape = SubResource("RectangleShape2D_d0de6")
+
+[connection signal="received_drop" from="Droppable" to="." method="_on_droppable_received_drop"]
+[connection signal="targeted" from="Droppable" to="." method="_on_droppable_targeted"]
+[connection signal="received_drop" from="DerivedDroppable" to="." method="_on_derived_droppable_received_drop"]
+[connection signal="targeted" from="DerivedDroppable" to="." method="_on_derived_droppable_targeted"]
